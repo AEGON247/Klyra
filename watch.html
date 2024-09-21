@@ -1,0 +1,259 @@
+<html>
+<head>
+    <title>Klyra - Watch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .background-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .background-shapes::before, .background-shapes::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(173, 216, 230, 0.5), rgba(221, 160, 221, 0.5));
+            filter: blur(100px);
+            border-radius: 50%;
+        }
+        .background-shapes::before {
+            top: -200px;
+            left: -200px;
+        }
+        .background-shapes::after {
+            bottom: -200px;
+            right: -200px;
+        }
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            filter: blur(20px);
+            animation: float 10s infinite;
+        }
+        .bubble:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 20%;
+        }
+        .bubble:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 70%;
+        }
+        .bubble:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 80%;
+            left: 30%;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        .container {
+            text-align: center;
+        }
+        .logo-container {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 20px;
+            margin: 0 auto 50px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+        .search-box input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .search-box button {
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        .search-box button:hover {
+            background-color: #333;
+        }
+        .video-list {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .video-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .video-item img {
+            width: 120px;
+            height: 90px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .video-item p {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .mini-player {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 400px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 10;
+        }
+        .mini-player iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
+        }
+        .blur-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 5;
+            display: none;
+        }
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-shapes"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    <div class="container">
+        <div class="logo-container">
+            <img src="Logo.png" alt="Logo">
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchQuery" placeholder="Enter topic">
+            <button onclick="fetchYouTubeShorts()">Search</button>
+        </div>
+        <div class="video-list" id="videoList"></div>
+    </div>
+    <div class="mini-player" id="miniPlayer">
+        <iframe id="videoPlayer" src="" allowfullscreen></iframe>
+    </div>
+    <div class="blur-background" id="blurBackground"></div>
+
+    <script>
+        const apiKey = 'AIzaSyBAP2tGFCDoIvt8l_0n6Y7KGE9oRzICALc'; // Replace with your YouTube API key
+
+        window.addEventListener('load', () => {
+            document.getElementById('preloader').style.display = 'none';
+        });
+
+        function fetchYouTubeShorts() {
+            const query = document.getElementById('searchQuery').value;
+            const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${query}&type=video&key=${apiKey}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const videoList = document.getElementById('videoList');
+                    videoList.innerHTML = '';
+                    data.items.forEach(item => {
+                        const videoId = item.id.videoId;
+                        const thumbnail = item.snippet.thumbnails.default.url;
+                        const title = item.snippet.title;
+
+                        const videoItem = document.createElement('div');
+                        videoItem.className = 'video-item';
+                        videoItem.innerHTML = `
+                            <img src="${thumbnail}" alt="${title}">
+                            <p>${title}</p>
+                        `;
+                        videoItem.onclick = () => playVideo(videoId);
+                        videoList.appendChild(videoItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching YouTube shorts:', error));
+        }
+
+        function playVideo(videoId) {
+            const videoUrl = `https://www.youtube.com/embed/${videoId}`;
+            document.getElementById('videoPlayer').src = videoUrl;
+            document.getElementById('miniPlayer').style.display = 'block';
+            document.getElementById('blurBackground').style.display = 'block';
+        }
+
+        document.getElementById('blurBackground').addEventListener('click', () => {
+            document.getElementById('miniPlayer').style.display = 'none';
+            document.getElementById('blurBackground').style.display = 'none';
+            document.getElementById('videoPlayer').src = '';
+        });
+    </script>
+</body>
+</html>

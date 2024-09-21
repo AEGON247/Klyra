@@ -1,0 +1,559 @@
+<html>
+ <head>
+  <title>
+   Klyra - Profile
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&amp;display=swap" rel="stylesheet"/>
+  <style>
+   
+        .navbar {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2px 20px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding-bottom: 0%;
+        }
+        .navbar .logo {
+            font-size: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            padding-top:10px;
+        }
+        .navbar .profile {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .profile img {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .navbar .profile .signup {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .navbar .profile .signup:hover {
+            text-decoration: underline;
+        }
+        .content {
+            background-color: #fff;
+            margin: 20px;
+            border-radius: 10px;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .content h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .signup-form {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+        .signup-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .signup-form input:focus {
+            border-color: #a8b4ff;
+        }
+        .signup-form button {
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .signup-form button:hover {
+            background-color: #333;
+        }
+        .social-signup {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .social-signup p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+        .social-signup .icons {
+            display: flex;
+            justify-content: center;
+        }
+        .social-signup .icons a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        .social-signup .icons .google {
+            background-color: #db4437;
+        }
+        .social-signup .icons .google:hover {
+            background-color: #c33d2e;
+        }
+        .social-signup .icons .facebook {
+            background-color: #3b5998;
+        }
+        .social-signup .icons .facebook:hover {
+            background-color: #334d84;
+        }
+        .bottom-menu {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000;
+            border-radius: 30px 30px 0 0;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .bottom-menu i {
+            margin: 0 15px;
+            font-size: 30px;
+            color: #fff;
+            transition: transform 0.3s;
+        }
+        .bottom-menu i:hover {
+            transform: scale(1.5);
+        }
+        .bottom-menu i:nth-child(1) { color: #a8b4ff; }
+        .bottom-menu i:nth-child(2) { color: #f8c3ff; }
+        .bottom-menu i:nth-child(3) { color: #ffebc3; }
+        .bottom-menu i:nth-child(4) { color: #c3ffd8; }
+        .bottom-menu i:nth-child(5) { color: #c3fffc; }
+        .bottom-menu i:nth-child(6) { color: #fff; }
+   body {
+            
+            background-color: #f8f5f2;
+            margin: 0;
+            padding: 0;
+            
+            font-family: 'Poppins', sans-serif;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            border: 3px solid black;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .main-content {
+            width: 65%;
+        }
+        .sidebar {
+            width: 30%;
+            background-color: #f0eae4;
+            padding: 20px;
+            border-radius: 20px;
+            padding-bottom: 0%;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 700;
+            margin: 0;
+            padding: 0%;
+        }
+        .filter-buttons {
+            display: flex;
+            margin: 20px 0;
+        }
+        .filter-button {
+            display: flex;
+            align-items: center;
+            padding: 5px 20px;
+            margin-right: 10px;
+            border-radius: 30px;
+            background-color: #f0eae4;
+            
+            cursor: pointer;
+        }
+        .filter-button.active {
+            background-color: #000;
+            color: #fff;
+        }
+        .filter-button i {
+            margin-right: 10px;
+        }
+        .course-card {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 1%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .course-card .category {
+            display: flex;
+            align-items: center;
+            
+            margin-bottom: 3px;
+        }
+        .course-card .category i {
+            margin-right: 10px;
+        }
+        .course-card .rating {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        .course-card .rating i {
+            margin-right: 5px;
+        }
+        .course-card .title {
+            font-size: 17px;
+            
+            margin: 10px 0;
+        }
+        .course-card .students {
+            font-size: 14px;
+            color: #888;
+        }
+        .course-card .avatars {
+            display: flex;
+            margin-top: 10px;
+        }
+        .course-card .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .profile .name {
+            font-size: 20px;
+            
+        }
+        .friends {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .friends .count {
+            
+            margin-right: 10px;
+        }
+        .friends .avatars {
+            display: flex;
+        }
+        .friends .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        .activity {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .activity .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+
+        }
+        .activity .header .title {
+            
+        }
+        .activity .header .year {
+            font-size: 14px;
+            color: #888;
+        }
+        .activity .chart {
+            display: flex;
+            justify-content: space-between;
+        }
+        .activity .chart .bar {
+            width: 10%;
+            height: 100px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            position: relative;
+        }
+        .activity .chart .bar .fill {
+            width: 100%;
+            height: 50%;
+            background-color: #ffcc00;
+            border-radius: 10px 10px 0 0;
+            position: absolute;
+            bottom: 0;
+        }
+        .my-courses {
+            
+            margin-bottom: 20px;
+        }
+        a{color:#000;}
+        a:visited{color:#000}
+  </style>
+ </head>
+ <body>
+    <div class="navbar">
+        <div class="logo">
+         Klyra
+        </div>
+        <div class="profile">
+         <!---<img alt="Anonymous profile picture" height="30" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-Hh5RPsKhtBPsWCFSiEKnUJ6x/user-8qgiVpCV0U0b7zDjfFInHgjl/img-eTsHhnpFktKsO9z40y9UvJgs.png?st=2024-09-20T10%3A32%3A52Z&amp;se=2024-09-20T12%3A32%3A52Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-19T23%3A08%3A47Z&amp;ske=2024-09-20T23%3A08%3A47Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=E3wLbR7ZflXHS9r9DCD29dDsiAMIbx9xILsmR/%2Bm7N4%3D" width="30"/>-->
+         <a class="signup" href="signup.html">
+        
+         </a>
+        </div>
+       </div>
+       
+<div class="content">
+  <div class="container">
+   <div class="main-content">
+    <h1 style="font-size: 26px;">
+     Welcome Sahana N!
+    </h1>
+    <div class="filter-buttons">
+     <div class="filter-button active">
+      <i class="fas fa-th-large">
+      </i>
+      All
+     </div>
+     <div class="filter-button">
+      <i class="fas fa-video">
+      </i>
+      <a href = "watch.html" style="text-decoration:none">KlyraLearn</a>
+     </div>
+     <div class="filter-button">
+      <i class="fas fa-book">
+      </i>
+      <a href = "Learn/dist/index.html" style="text-decoration:none">KlyraQuiz</a>
+     </div>
+     <div class="filter-button">
+      <i class="fas fa-bolt">
+      </i>
+      <a href="Flash/index.html" style="text-decoration:none">KlyraFlash</a>
+     </div>
+     <div class="filter-button">
+      <i class="fas fa-calendar">
+      </i>
+      <a href="calender.html" style="text-decoration:none">Schedule</a>
+     </div>
+    </div>
+    <div class="course-card" style="background-color: #fddde6;">
+     <div class="category">
+      <i class="fas fa-video">
+      </i>
+      <div class="rating">
+       <i class="fas fa-star">
+       </i>
+       
+      </div>
+     </div>
+     <div class="title">
+      Study Superposition Theorem Today!
+     </div>
+     <div class="students">
+     Scheduled for Saturday
+     </div>
+     
+    </div>
+    <div class="course-card" style="background-color: #ffe8c2;">
+     <div class="category">
+      <i class="fas fa-book">
+      </i>
+      KlyraQuiz
+      <div class="rating">
+       <i class="fas fa-star">
+       </i>
+       
+      </div>
+     </div>
+     <div class="title">
+      Review and Test Thermodynamics
+     </div>
+     <div class="students">
+      9 questions answered!
+     </div>
+     
+    </div>
+   <!--- <div class="course-card" style="background-color: #e8e8ff;">
+     <div class="category">
+      <i class="fas fa-video">
+      </i>
+      KlyraFlash
+      <div class="rating">
+       <i class="fas fa-star">
+       </i>
+       
+      </div>
+     </div>
+     <div class="title">
+      Active Recall and Spaced Repetition
+     </div>
+     <div class="students">
+      20 Cards on deck 
+     </div>
+    
+    </div>-->
+        <div class="course-card" style="background-color: #d4f8e8;">
+     <div class="category">
+      <i class="fas fa-cube">
+      </i>
+      Schedule Learning
+      <div class="rating">
+       <i class="fas fa-star">
+       </i>
+       
+       <i class="fas fa-trophy">
+       </i>
+       
+      </div>
+     </div>
+     <div class="title">
+      Scheduled to Study Superposition and Thevenins Theorem
+     </div>
+     
+     
+    </div>
+   </div>
+   <div class="sidebar">
+    <div class="profile">
+     <img alt="Profile Picture" height="60" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhAQEBMQFRAQDxAPEBAVEA8PDw8PFRIWFhURFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGhAQGi0lHx8tLS0tLS0tLS0tLS0tLS0tLSstKy0tLS0tLS0tLS0tLS0tLS4tLS0tLS0tLS0tKy0tLf/AABEIARMAtwMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAACAwABBQQGB//EADcQAAIBAgMGBAQFBAIDAAAAAAABAgMRBBIhBQYxQVFhEyJxkTJSgaFCscHR8BQVYvEWMyNDcv/EABoBAAMBAQEBAAAAAAAAAAAAAAABAgMEBQb/xAAoEQACAgIBBAMAAQUBAAAAAAAAAQIRAxIhBDFBURMiYTIUI0KR0QX/2gAMAwEAAhEDEQA/APoDQLGWKsd554soblKyjsBdiWDsXlCwFkGWJYLAWXYOxdgAXYpjLEsAULIMsSwgASJYOxdhjoXYgyxVhBQsuwdiWAKAsVYZYlh2KhRYyxAsBtirB5WTKRZVC7FWGWKaHYqAsSwVmVYLCiiBWJYLAGxdiytQsCWJYmpaAdFWJYKxLAANiWLysmVhYUVYli0iWACrFWCKsFgVYli7MlgsAbFhWIOwH2KsMsCZ2VQNirBkGAFisoyxVgsQGUrKMKCwAykyhl2CwF5SZRligsKBsSwWhYABYlgyAMCxLBEAQNirBF2AALEsHlJYAAsQIgDOjKU4DspVjOy6E5CZR1irDsKFWJYblKyhYqFOJWRDmgQsKFOIUOOo+dPQXCjcWxWhddqwNCnmR2U6CSCdO3AjY01OOeGtqKyI04u4qrQQ1P2S8fo4spMo50mDlLsz1FOJWQdlJlCwoTkLyjMpMo7CheUrKNykyhYUKyEG5SCsKH2ZaQbkgJVUjM1JlKaEVMYlzOd49cikmTaOy5JPsckK92dPjpc0JuikrIothxpHNPaMFzQmptePJi5Y6SNRouN+hj09rR5sZLbNNfiQnFjUka2d9CKfUx/7xHjctbXg18SXroKmO0bKLlIxKe2I83p1CW1IN2UkGrC0akJ3OfFStrY5Ku0ox5gf3SnL8S9ykn3Jk12OujUuOaMyrjIx1ujkq7bSv2LUW+xm2ork3GKnU1seVlvXTU1HMr81fUXi96IRlG8o69ylBmbyJKz2N2DKZ52e9FKy8y90SvtyOTMmuF+I9GL5Y+D0UKiZDw2F3uhreS1IP42T88Tde3VLg0DVx918R8ijjqnFSl7jK+2q1rZ2cyhk9mrzR8o+pRrp8ypJ8mfLsBvFVpvV3Rs098usWN/In2sccmNr0ezlKS5v3AniXzb+rPKx3wjzTQnGbxRfB6lRk7poJSVcM9YsQn0HxaPBw3hSHPee3AcvwmM15PbTiK8HuePe9enB39RUN7Xfh9zPaRe8D3CoBqkeV/5XFRu7jI71U3G9yXKfopSgeklCKInE8BtLeab+BnFHeOquZS2ZLyRR9Cx0kle55TFbcyt68HbiYWJ3hqSVrmPXrt8zaDku5z5Jpvg9dW3r8ul2zJr7y1GmlfXuYMJsdCqxmbk2MWIk25Nu97sXWxMm7tv3JWxDOdNsdmdHfRrPm37kxO0qlsilLL0u+BywEVJeYRUUdcaz6v3IL8SSRAbZOtnsVu1W/wAfuXU3VrNcvufVfAj0K8GPQ0Wps4M+RS3QrdV7Mpbq110+59cdKHRAunDoivqToz5FLdfEf4/cBbq4j/H7n17w4dC/Dh0E9SlBnx6W6+J5KPuy/wDjGJ6R92fX/Ch0J4cOiFUR6P2fJ47tYi2qXuxUd1cTfhH3Z9e8OHRFxUOhLSLUP0+US3RxLXCPuxC3NxS+V/Vn2SLh0EVsZRj8TS93+RK9UU8cfLPkL3SxXyx9xc90sV8q9z6/h8fh5vLCcHL5brN7PUdLw+w0vwTgvZ8Se6uKX4V7gPd6vzgfanGn0QipSp9EWlHyZSg12Z8dWwK3yC/7JXX4GfY/Bp9EDLDU+iL0iZuMvZ8WrbKrfIw6Gy6iWsHc+uywNPohf9BT6IaxRJ+x8oqbMq/KxNPZNW93Fn154Cn0QEsBT6IaxxsPsfKquzKllaLIfVP7fDoiA8UX5C5G7PEdxMsR3Mt4gF1yljKeQ03W7g+L3M11wHXHoT8hq+L3I6vcyv6gv+oHoHyGhKv3K8fuZkqpI1A0D5DTdbuRVu5myl3LjMNB/IM2vtaFGKzTtKXwx/FJc7dPVnn8VtmKXG91mUbrN6NHTvLsqjiKd6sLyppuEk7TXZPp2PG4fZ9KlPWMpRtZqXmcVylF8mZTbjwaxW3ImGIq4mvOMZuE6cvJpKKy30ldK9+Fke32JtOrBrD4mpGc7PJJZlJ2/DK/Hs+Ohy7NpwjJT8rdtJX1cfUbtDZ8ZyhWg2pw0TunGWvG3VfuOMWkKTTZ6DxmD4r7lX0TfNJgxqo1SMWw87KzsVOuUqxVE7DXUYPjAOqLbChOQ/xynXOdsFlUhbM641yHImQNQ3ZeYDxQbAOLKoztj1MqcxSTBbFQWxmYimBcpPUYhucuMynYKK5iorkucmSMyqkgUKh2dV7pp8LO/pY8xjqKzcjfqVbR9dDDxEU3dv1/RGORWdGJj8HTivK7W104o2cJGKjlVrL7eh5+lWXK2j9mdcMU1rZet7CTRbTbNHFbUhFqnN2bfl9C5TPJ7Ym3HxJPyqVnp5oSbto+l7HfsfH/APrbvF/BL5ZfK+z5DhNbURkxtxtG3nLUxNwrm9HNYzxClMU5EzBQrGuYKmCtSpRGFhuoQU0QKDZhXCjO4FeFgKcrDoVjXPWzLVhMpXEqtrYAR3qCsBKk0HSpK17v3E1ZvgIb7ER0KnJK/I5Iy5j54l2tb6gxJoXKYcUIY+EtAGhWLTyvtr9DCxEn/Op6GrJWsebxNBxm0+F7x7o58yfc6sDT4ExrWbvqmr/pdDKWIUoZfddV1OPGySTaesbu3UZg7deOq/Y5duaOzUKhXjGUqVZKVKorP/Hv6cBOPpPD5Z01Nxd812mrfhmpJ8OHsDtCimr8+xxY3aMoUlTnHNG/HpB8fRicqXIa2z1exNp+NC8vjjpLpLv+5ouR882LtCUalOSk3FNQtyyP8P6nvVI7cGTePJ5/UYtJcDblsGMbgtGxgOjJovMxNy8wAOuUKzEGAdSrcVcHMRMfYXcKEtdSVrX0sBoSKQrAKNR9WFFimFBgA1MJC0w0gGRlZgXIpCCi3IRi8Oqkcr4r4X0Y5MlxNJqmVFtO0eQx9GcZZZcufVdQKVT+dz2FXDwmrTV+nVejMXHbLgpwpwcpTnmajZXUEtZSfJcF9Tgn08ou0elj6mMlUuGZ8aj0u9H8XQqrShK6la/8+w3EYCpD4k8rdlfnzscSpSzxS4aa9ieVw0N0+UzG2lBUqiy6Rlql0aeqPc7Exvi0oy5ryy9UeS2/Km2421TVn+f0O3cvGJSnRd7uKlHvbQMEtMuvhizw2xX5R7OMyOQCkiXPSPNovMTMA2WmABZiFZkUFjostEsRFGZGi6cAcwUZMAI4jIwAuOpKT4Rb+mgrGk3wgC7lVHya16cwVIAoPKFTotq+lur4IaoqCvPV8odPX9jgxuN04u3RfCv2OfJnjHhHbh6KU+ZcImJxtKn8Um32skcmC2rCrKSjdKOrm/g9PUya2CnWd/gpX1nbWS/xXP1FbVcaNLJT0S0XVvq+rOT+ondvsd76TDVJGzjtu0qV/ik1FyVlo3yXEz93ts0XPzyk8TXfnbhJRhZ+Wim+CV/q33MPA0IU4y8enKrVqNZaSXlj5JXcneyfmT6+XQDZ1SpdU4LKqtRwi7Xy8ZSgp9l6vQpdRNyRhPpcai/B7Ws3iKqgn/4aEr1JL8dW2lNdlfU4t76DUYzp+VJZWl05Gtg6KpwUIq0V7tvi33bBxlHxIyg+a07M6skLi/ZxYp1JX2Pl+rbT1vz7mju3XjGtDPo1dRl6q1n2A2ts+dGbutL6O2hx4iFmpx9bnlpuMr9HqNKSr2fTYohj7u7V8WCi354qz7rqbR68JqcbR5M4OEqYALZbQuRZAdyxOYoAOtzBzAAuRRB2YOlFu9RvLyS4y/ZG1QrQjpGMV9Ff34ng6205Rqyi+EbWXaxpYba11e+pxTy22mejDClFNHspY2PRC5YmnPSUE+/Bo8lPa2tjpwuPuRtFmqhJGzitnKWtOXD8Mnql2Zzxo5dU1n6tO0fRfqNw+IvzDxULq64jcmo0uw444ue0u55zG4nzSzTi8vGN8svZ8TknTnKpabSpRdpeZNzas8r7a6/UZtVZmozayKVqlm86b+FJrgn17HNHDrVwvJuV3HPKWj4pSkcLlT5O7ZXR3YvGWXHT7HM9mr/uq6teaFNvSL5NrmxuzpxVWU8TTTtZ0ruORSvxcZWV+HXsMhVc8RlqRlGMX4ibjaE4rla1lrZ6N3Romn3fPonfmq4G0NnxUFnXnqPxJJ8m0kl7JI58RspQ8GMNIQrOtbjbytWj6t/mbGfM7nJi6t5WXLT6nTigpSOfqsjhjr2WqwMqncTrcqpM7jxxeMoRqLLPVXTMTG7EShPw+L4J8kbMqoDmZTxQn3RpDNKHZnjMCqlKqkrqSeq6o+ibPxKlBN8bamTlje7Suudh061+i0torGeHA8b78GmbOsi5XJ3VaxzyrHM6gOc6Tnsc6hDnciAKzUuDKSF5gJsokztt4TNapD4lpLTjHr9DglVjBpX+JcfXgbcjlq4OM2ll1ujh6nD/AJI7+lz39GdWHwV6cW9Wzow+Da4mpTwuWEY/KkishmonU5A0I2NSjJNcTghDUcrpjGZe8mzIySqOE5OMknkllaTdrvR3SvfgZmz6MYS8tS91rHxL1Fbplik39T1tPEW0Y2moLWMIJ8bqKTv1uYyxXK0aGPh6EU1OWeUo/DKp/wBkf/mL1Xqdjr3/AGZoOpHohc1F8l7FKFKioy9mX4ajeS+F626SOOVOzvf/AGd21Go05W7W9boyaNfqdfTxpM8/rp3NL8HST/nM567NKnaSMjHSszoOEC1yrdxcK5TqCAbZdQGwfFJGqmwAtgZg6lVcAHZgAWnUsWiCoLO2TFNst1mCpMsjgq7NbYmHterPhwjfr1MWvWUE5S/2YuO3hqz8kXlgtElxt6nL1GaMVqeh0fSTn93wj6QqqfBpgyPmuA21Xpu6eaPRt/ZnrNm7xU6iSl5ZdGc0cykd0+mnHk3rhPuIp1E9bhZ7s0MhE61pOL4nXha1zh2gkmm/owMNiLE2bR5NeUgHXsZ9TGHDiNoC2G1QW3cXoornq/Qxo17AYjFuUm/5YTKZ2QVRPHzZN5tmvg9o20Zy46veVzOlWaC/qvQrYyY5zLjUFQxC52Kzp8BiHOrqVmEPRkddhYHQxcajFyxT7Auu2KxUdCmQ54SIUI2EjnxeMjTWtr9DOx22krxp+5lVW5LM5avqcefq/ED2uj/85L7Zf9f9JtDHyqPt0OVIasP3XuR0bc0ea23yz1qAUw1WFsFgFtG3s7btSm9Xmj9z1+y9rQqpWaufN4R7o6MNUlFqUZWfrxNIZWu5jkxRn+M+m41Jqz5nn6lZwm48uQOzNuKaUajWb1A2nJXTRt/P+Jyv+0vsBidoclqzjnXbepTkCo3OuGFR5Z5ebqnk4XCC1BdQbFaO7Rzzhq9V7mzZypBNi2iZrASqCspJklTdiqD114IuNQXVjxs16kSddjSCvhnXOrHr9wU4dfuZE8M7/F9xEqcuv3MXnl6OldND2b8pw+vqK8VGNCDvxNGhEvHllLujPLihHsztjUIKjDo0Q12MHBGTXjYSpGtjKKeqMmtSaPHaPqssHF2XGVhqmcqkGSRGY1sFsrMS4FWQopkuBNhRmaeF2i9FJmSRMuGRwdozywjkjrI9C6oPiHDhMRfR8R6Z6kMu6tHg5uneOVMa5gSBcgkyrszqgFUGWFqGoxztoJfo3+CpAuIbRFERQtwFyiOlEFEtFJioxGQkXJFwQJA3YyEyC2tSF2yGkdCX6/qIxkF9kUQ8o+v8GRUWoyn+j/JkIQcPk6JQWui/ibCyLpz/AGIQAE4iKVrc7/mKRCAMuPFeqHxgrcFwX5kIITG4aKuvS/2Zo1Iq1+5CHb0vk87rvBzslyEOs886XFfmDlWn1/NFEJZaI4KzfOyFXLIOJMgglFfz0KIVIUAsi005/oy1Ba6cE/1KIQX4ASIQhoZH/9k=" width="60"/>
+     <div class="name">
+      Sahana Naganandh
+     </div>
+    </div>
+    <div class="friends">
+     <div class="count">
+      27 Friends
+     </div>
+     <div class="avatars">
+      
+     </div>
+    </div>
+    <div class="activity">
+     <div class="header">
+      <div class="title">
+       Activity
+      </div>
+      <div class="year">
+       Time Spent
+      </div>
+     </div>
+     <div class="chart">
+      <div class="bar">
+       <div class="fill" style="height: 30%; background-color: #ffcc00;">
+       </div>
+      </div>
+      <div class="bar">
+       <div class="fill" style="height: 50%; background-color: #ffcc00;">
+       </div>
+      </div>
+      <div class="bar">
+       <div class="fill" style="height: 70%; background-color: #ffcc00;">
+       </div>
+      </div>
+      <div class="bar">
+       <div class="fill" style="height: 60%; background-color: #ffcc00;">
+       </div>
+      </div>
+      <div class="bar">
+       <div class="fill" style="height: 80%; background-color: #ffcc00;">
+       </div>
+      </div>
+      <div class="bar">
+       <div class="fill" style="height: 40%; background-color: #ffcc00;">
+       </div>
+      </div>
+      <div class="bar">
+       <div class="fill" style="height: 90%; background-color: #ffcc00;">
+       </div>
+      </div>
+     </div>
+    </div>
+    <div style="background-color: #;" class="my-courses">
+     My courses
+    </div>
+    <div class="course-card" style="background-color: #fddde6;">
+     <div class="category">
+      <i class="fas fa-laptop-code">
+      </i>
+      IT &amp; Software
+      <div class="rating">
+       <i class="fas fa-star">
+       </i>
+       4.8
+      </div>
+     </div>
+     <div class="title">
+      Flutter Masterclass (Dart, APIs, Firebase &amp; More)
+     </div>
+     
+
+    </div>
+    
+</div>
+  <div class="bottom-menu">
+    <a href="watch.html" style="text-decoration:none"><i class="fas fa-graduation-cap">
+    </i></a>
+    <a href="Learn/dist/index.html" style="text-decoration:none"><i class="fas fa-book">
+    </i></a>
+    <a href="Flash/index.html" style="text-decoration:none"><i class="fas fa-sticky-note">
+    </i></a>
+    <i class="fas fa-calendar">
+    </i>
+    <a href="profile.html" style="text-decoration:none"><i class="fas fa-smile">
+    </i></a>
+   </div>   
+ </body>
+</html>

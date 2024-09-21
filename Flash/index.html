@@ -1,0 +1,302 @@
+<html>
+<head>
+    <title> Klyra - Flash </title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://wallpaperaccess.com/full/3957931.jpg') no-repeat center center;
+            background-size: cover;
+            background-color: rgba(255, 255, 255, 0.5);
+            background-blend-mode: lighten;
+            flex-direction: column;
+        }
+        .note-stack, .flipped-stack {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            margin: 0 20px;
+        }
+        .note {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+        .note.flipped {
+            transform: rotateY(180deg);
+        }
+        .note .front, .note .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .note .front {
+            background-color: #f7e3b6;
+        }
+        .note .back {
+            background-color: #c3f1d1;
+            transform: rotateY(180deg);
+        }
+        .reset-button {
+            margin-top: 20px;
+            margin-bottom: 100px;
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .reset-button:hover {
+            transform: scale(1.1);
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .navbar {
+            background-color: #000;
+            padding: 10px 20px;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            gap: 20px;
+            width: fit-content;
+            margin-bottom: 0;
+        }
+        .navbar i {
+            font-size: 24px;
+            transition: transform 0.2s;
+        }
+        .navbar i:hover {
+            transform: scale(1.2);
+        }
+        .icon-education {
+            color: #c3b6f1;
+        }
+        .icon-book {
+            color: #f7c6d9;
+        }
+        .icon-folder {
+            color: #f7e3b6;
+        }
+        .icon-group {
+            color: #c3f1d1;
+        }
+        .icon-smile {
+            color: #c3f1f1;
+        }
+        .add-note-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .add-note-button:hover {
+            transform: scale(1.1);
+        }
+        .new-note {
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 10;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .new-note.flipped {
+            transform: rotateY(180deg);
+        }
+        .new-note .front, .new-note .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .new-note .front {
+            background-color: #f7e3b6;
+        }
+        .new-note .back {
+            background-color: #c3f1d1;
+            transform: rotateY(180deg);
+        }
+        .new-note textarea {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            resize: none;
+            border-radius: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .save-button {
+            position: absolute;
+            bottom: 10px;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .flip-button {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            width: 30px;
+            height: 30px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .flip-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <button class="add-note-button" onclick="createNewNote()">+</button>
+    <div class="container">
+        <div class="note-stack">
+            <div class="note" onclick="flip(this)">
+                <div class="front">Planks constant</div>
+                <div class="back">h = 109678 cm-1</div>
+            </div>
+            <div class="note" onclick="flip(this)">
+                <div class="front">Thevenin Max Power</div>
+                <div class="back">P = (Vth)^2/(4Rth)</div>
+            </div>
+            <div class="note" onclick="flip(this)">
+                <div class="front">Discriminant</div>
+                <div class="back">D = b^2 - 4ac</div>
+            </div>
+        </div>
+        <div class="flipped-stack"></div>
+    </div>
+    <button class="reset-button" onclick="resetStack()"><i class="fas fa-redo"></i></button>
+
+    <div class="navbar">
+        <i class="fas fa-graduation-cap icon-education"></i>
+        <i class="fas fa-book icon-book"></i>
+        <i class="fas fa-folder icon-folder"></i>
+        <i class="fas fa-users icon-group"></i>
+        <i class="fas fa-smile icon-smile"></i>
+    </div>
+
+    <script>
+        function flip(note) {
+            note.classList.toggle('flipped');
+            if (note.classList.contains('flipped')) {
+                setTimeout(() => {
+                    document.querySelector('.flipped-stack').appendChild(note);
+                }, 600);
+            } else {
+                setTimeout(() => {
+                    document.querySelector('.note-stack').appendChild(note);
+                }, 600);
+            }
+        }
+
+        function resetStack() {
+            const notes = document.querySelectorAll('.note');
+            notes.forEach(note => {
+                note.classList.remove('flipped');
+                document.querySelector('.note-stack').appendChild(note);
+            });
+        }
+
+        function createNewNote() {
+            const newNote = document.createElement('div');
+            newNote.classList.add('new-note');
+            newNote.innerHTML = `
+                <div class="front">
+                    <textarea placeholder="Type front side..."></textarea>
+                    <button class="flip-button" onclick="flipNewNote(event)"><i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="back">
+                    <textarea placeholder="Type back side..."></textarea>
+                    <button class="save-button" onclick="saveNewNote(event)">Save</button>
+                </div>
+            `;
+            document.body.appendChild(newNote);
+        }
+
+        function flipNewNote(event) {
+            event.stopPropagation();
+            const newNote = document.querySelector('.new-note');
+            newNote.classList.toggle('flipped');
+        }
+
+        function saveNewNote(event) {
+            event.stopPropagation();
+            const newNote = document.querySelector('.new-note');
+            const frontText = newNote.querySelector('.front textarea').value;
+            const backText = newNote.querySelector('.back textarea').value;
+            const note = document.createElement('div');
+            note.classList.add('note');
+            note.setAttribute('onclick', 'flip(this)');
+            note.innerHTML = `
+                <div class="front">${frontText}</div>
+                <div class="back">${backText}</div>
+            `;
+            document.querySelector('.note-stack').appendChild(note);
+            newNote.remove();
+        }
+    </script>
+</body>
+</html>
