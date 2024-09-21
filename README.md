@@ -5,7 +5,15 @@ Fully equipped with a media player, tracking calendar, leaderboard, and flashcar
 We at Klyra are dedicated to innovating in the education sector after being part of a subpar culture that does not promote innovation as freely compared to the global scene and are working towards bringing the relevant attention centered technologies to light, so scroll down and find out the rest for yourself!
 
 <h2> Watch our video to get to know a little about us ..... </h2>
-https://biteable.com/watch/4272879/bae9849cd9d15a98e7945ce71cfbf30c
+
+
+https://github.com/user-attachments/assets/94201151-960d-4fc6-a0f6-eac09ac30884
+
+
+
+
+
+
 
 <h3>Note to use our services </h3>
 <h4>1) Download/Clone the Github Repo</h4>
