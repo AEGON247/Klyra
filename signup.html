@@ -172,6 +172,18 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
         }
+        .btn{
+
+            width: 100%;
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
         .form-group button:hover {
             background-color: #333;
         }
@@ -223,6 +235,9 @@
         .bottom-menu i:nth-child(4) { color: #c3ffd8; }
         .bottom-menu i:nth-child(5) { color: #c3fffc; }
         .bottom-menu i:nth-child(6) { color: #fff; }
+
+        a{color: white}
+        a:visited{color:white}
   </style>
  </head>
  <body>
@@ -255,8 +270,9 @@
             <input type="password" id="password" placeholder="Password" required>
         </div>
         <div class="form-group">
-            <button type="submit">Sign Up</button>
+            <button type="submit">Submit</button>
         </div>
+        <button class='btn' type="submit"><a href="profile.html" style="text-decoration: none">Sign Up</a></button>
     </form>
     <div class="social-signup">
         <p>Or sign up with</p>
@@ -267,16 +283,16 @@
     </div>
 </div>
   <div class="bottom-menu">
-   <i class="fas fa-graduation-cap">
-   </i>
-   <i class="fas fa-book">
-   </i>
-   <i class="fas fa-sticky-note">
-   </i>
-   <i class="fas fa-users">
-   </i>
-   <i class="fas fa-smile">
-   </i>
+   <a href="watch.html" style="text-decoration: none"><i class="fas fa-graduation-cap">
+   </i></a>
+   <a href="Learn/dist/index.html" style="text-decoration: none"><i class="fas fa-book">
+   </i></a>
+   <a href="Flash/index.html" style="text-decoration: none"><i class="fas fa-sticky-note">
+   </i></a>
+   <a href="calender.html" style="text-decoration: none"><i class="fas fa-calendar">
+   </i></a>
+   <a href="profile.html" style="text-decoration: none"><i class="fas fa-smile">
+   </i></a>
   </div>
 
   <script>
