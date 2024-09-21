@@ -10,4 +10,4 @@ https://biteable.com/watch/4272879/bae9849cd9d15a98e7945ce71cfbf30c
 <h3>Note to use our services </h3>
 <h4>1) Download/Clone the Github Repo</h4>
 <h4>2) Run the relevant pages as needed </h4>
-<h4>Also note in Watch.html you need to input you own unique youtube api key</h4>
+<h4>Also note in Watch.html you need to input you own unique Youtube API key</h4>
