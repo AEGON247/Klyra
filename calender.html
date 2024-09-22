@@ -1,441 +1,409 @@
 <html>
- <head>
-  <title>
-   Schedule
-  </title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&amp;display=swap" rel="stylesheet"/>
-  <style> body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    border: 15px solid black;
-    border-radius: 30px;
-    overflow: hidden;
-    padding: 0;
-    justify-content: center;
-    
-            
-}
-.navbar {
-    background-color: #000;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-
-    padding: 5px 20px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-}
-.navbar .logo {
-    font-size: 30px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    padding-top:5px;
-}
-.navbar .profile {
-    display: flex;
-    align-items: center;
-}
-.navbar .profile img {
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
-.navbar .profile .signup {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    font-family: 'Poppins', sans-serif;
-}
-.navbar .profile .signup:hover {
-    text-decoration: underline;
-}
-.content {
-    background-color: #fff;
-    margin: 20px;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
-    flex-grow: 1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
-    padding-bottom: 0%;
-}
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-.bnavbar {
-            background-color: #000;
-            padding: 10px 20px;
-            border-radius: 20px 20px 0 0;
+<head>
+    <title>Klyra - Schedule</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f3f0;
             display: flex;
-            gap: 20px;
-            align-items: center;
-            margin-left: 600px;
-            margin-bottom: 60px;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+            border: 1px solid #000;
         }
-        .bnavbar a {
-            text-decoration: none;
-        }
-        .bnavbar i {
-            font-size: 24px;
+        .navbar {
+            background-color: #000;
             color: #fff;
-            transition: transform 0.2s;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            border-radius: 0 0 10px 10px;
         }
-        .bnavbar i:hover {
-            transform: scale(1.2);
+        .navbar h1 {
+            font-size: 22px;
+            margin: 0;
         }
-        .bnavbar .icon-education {
-            color: #c3b6f1;
-        }
-        .bnavbar .icon-book {
-            color: #f1b6d1;
-        }
-        .bnavbar .icon-sticky-note {
-            color: #f1e3b6;
-        }
-        .bnavbar .icon-calendar {
-            color: #b6f1d1;
-        }
-        .bnavbar .icon-smile {
-            color: #b6f1f1;
-        }
-   
         .container {
             display: flex;
-            width: 100%;
-            height: 85%;
-            background-color: #fff;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            flex: 1;
         }
-        .schedule {
-            width: 70%;
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
             padding: 20px;
-            background-color: #f8f5f2;
-            overflow-y: auto;
+            background-color: #f7f3f0;
         }
-        .schedule-header {
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
         }
-        .schedule-header select, .schedule-header input {
+        .header select, .header .date {
+            background-color: #fff;
             border: none;
-            background-color: #fff   ;
-            color: #000;
-            
-            padding: 10px 20px;
+            padding: 10px;
             border-radius: 10px;
-            font-size: 13px;
+            font-size: 16px;
         }
-        .schedule-header input {
-            width: 200px;
+        .header .date {
+            display: flex;
+            align-items: center;
+            position: relative;
         }
-        .schedule-content {
+        .header .date i {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .calendar {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            display: none;
+            z-index: 1000;
+        }
+        .calendar table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .calendar th, .calendar td {
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .calendar th {
+            background-color: #f7f3f0;
+        }
+        .calendar td:hover {
+            background-color: #f7e0d6;
+        }
+        .schedule {
+            margin-top: 20px;
             display: flex;
             flex-direction: column;
         }
-        .time-slot {
+        .schedule-item {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
         }
-        .time-slot .time {
-            width: 80px;
-            text-align: left;
+        .day-label {
+            color: grey;
+            width: 50px;
+            text-align: right;
             margin-right: 10px;
-            color: #888;
-            padding-right: 7px;
+        }
+        .event-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         .event {
-            flex: 1;
+            background-color: #f7d6e0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        .event:nth-child(2) {
+            background-color: #f7e0d6;
+        }
+        .event:nth-child(3) {
+            background-color: #ffe8c2;
+        }
+        .event:nth-child(4) {
+            background-color: #d4f8e8;
+        }
+        .event:nth-child(5) {
+            background-color: #a8b4ff;
+        }
+        .event:nth-child(6) {
+            background-color: #d6d6f7;
+        }
+        .event:nth-child(7) {
+            background-color: #f7d6e0;
+        }
+        .form-container {
+            background-color: #fff;
             padding: 10px;
             border-radius: 10px;
-            color: rgb(48, 47, 47);
-            
-            position: relative;
-            margin-bottom: 5px;
-            width:700px;  
+            margin-top: 10px;
         }
-        .event .time-duration {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 12px;
-        }
-        .event.publicity {
-            background-color: #ffe8c2;
-        }
-        .event.technology {
-            background-color: #e8e8ff;
-        }
-        .event.sales-marketing {
-            background-color: #fddde6;
-        }
-        .event.finance {
-            background-color: #ffe8c2;
-        }
-        .event.seo {
-            background-color: #fddde6;
-        }
-        .event.public {
-            background-color: #e8e8ff;
-        }
-        .details {
-            width: 30%;
-            padding: 20px;
-            background-color: #fff;
-            border-left: 1px solid #eee;
-            overflow-y: auto;
-        }
-        .details .status {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .details .status .status-label {
-            background-color: #00c853;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-        .details .status .status-text {
-            color: #888;
-        }
-        .details .input-box {
-            margin-bottom: 20px;
-        }
-        .details .input-box input, .details .input-box select {
+        .form-container input, .form-container select, .form-container button {
             width: 100%;
             padding: 10px;
+            margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 10px;
             font-size: 16px;
-            margin-bottom: 10px;
         }
-        .details .reschedule {
-            background-color: #6c63ff;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 20px;
+        .form-container button {
+            background-color: #f7f3f0;
+            border: none;
             cursor: pointer;
         }
-        .details .consultant, .details .participants, .details .company, .details .service, .details .timezone {
-            margin-bottom: 20px;
+        .tabs {
+            display: flex;
+            margin-bottom: 10px;
         }
-        .details .consultant img, .details .participants img {
-            border-radius: 50%;
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 10px;
             margin-right: 10px;
         }
-        .details .participants img {
-            width: 30px;
-            height: 30px;
+        .tab.active {
+            background-color: #000;
+            color: #fff;
         }
-        .details .consultant img {
-            width: 50px;
-            height: 50px;
+        .bnavbar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: center;
+            width: 20%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .details .consultant .name, .details .participants .name, .details .company .name, .details .service .name, .details .timezone .name {
-            font-weight: bold;
+        .bnavbar a {
+            color: #a8b4ff;
+            text-decoration: none;
+            font-size: 24px;
+            transition: transform 0.2s, color 0.2s;
+            margin: 0 5px;
+            padding: 5px;
         }
-        .details .consultant .role, .details .participants .role, .details .company .role, .details .service .role, .details .timezone .role {
-            color: #888;
+        .bnavbar a:nth-child(2) {
+            color: #ffebc3;
         }
-  </style>
-  <script>
-   function addSubject() {
-            const subject = document.getElementById('subject').value;
-            const day = document.getElementById('day').value;
-            if (subject && day) {
-                const daySlot = document.querySelector(`.time-slot[data-day="${day}"] .events`);
-                const event = document.createElement('div');
-                event.className = 'event public';
-                event.textContent = subject;
-                daySlot.appendChild(event);
+        .bnavbar a:nth-child(3) {
+            color: #f8c3ff;
+        }
+        .bnavbar a:nth-child(4) {
+            color: #c3ffd8;
+        }
+        .bnavbar a:nth-child(5) {
+            color: #c3fffc;
+        }
+        .bnavbar a:hover {
+            transform: scale(1.2);
+        }
+        .right-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 20px;
+            background-color: #f7f3f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Klyra</h1>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <select>
+                    <option>Week</option>
+                </select>
+                <div class="date">
+                    <span id="selectedDate">20 / 09 / 2024</span>
+                    <i class="fas fa-calendar-alt" onclick="toggleCalendar()"></i>
+                    <div class="calendar" id="calendar">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Su</th>
+                                    <th>Mo</th>
+                                    <th>Tu</th>
+                                    <th>We</th>
+                                    <th>Th</th>
+                                    <th>Fr</th>
+                                    <th>Sa</th>
+                                </tr>
+                            </thead>
+                            <tbody id="calendarBody">
+                                <!-- Calendar dates will be generated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="schedule" id="schedule">
+                <div class="schedule-item" id="monday">
+                    <div class="day-label">MON:</div>
+                    <div class="event-container">
+                        <div class="event">Superposition Theorem</div>
+                    </div>
+                </div>
+                <div class="schedule-item" id="tuesday">
+                    <div class="day-label">TUE:</div>
+                    <div class="event-container">
+                        <div class="event">Carnot Cycle</div>
+                    </div>
+                </div>
+                <div class="schedule-item" id="wednesday">
+                    <div class="day-label">WED:</div>
+                    <div class="event-container">
+                        <div class="event">Thevenins Circuits</div>
+                    </div>
+                </div>
+                <div class="schedule-item" id="thursday">
+                    <div class="day-label">THU:</div>
+                    <div class="event-container">
+                        <div class="event">Organometals</div>
+                    </div>
+                </div>
+                <div class="schedule-item" id="friday">
+                    <div class="day-label">FRI:</div>
+                    <div class="event-container">
+                        <div class="event">Taylors Series</div>
+                    </div>
+                </div>
+                <div class="schedule-item" id="saturday">
+                    <div class="day-label">SAT:</div>
+                    <div class="event-container">
+                        <div class="event">Aromaticity</div>
+                    </div>
+                </div>
+                <div class="schedule-item" id="sunday">
+                    <div class="day-label">SUN:</div>
+                    <div class="event-container">
+                        <div class="event">Structure of Chlorophyll</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="tabs">
+                <div class="tab active">Schedule</div>
+                <div class="tab">Add Subject</div>
+            </div>
+            <div class="form-container">
+                <input type="text" id="subjectInput" placeholder="Enter subject">
+                <select id="daySelect">
+                    <option value="monday">Monday</option>
+                    <option value="tuesday">Tuesday</option>
+                    <option value="wednesday">Wednesday</option>
+                    <option value="thursday">Thursday</option>
+                    <option value="friday">Friday</option>
+                    <option value="saturday">Saturday</option>
+                    <option value="sunday">Sunday</option>
+                </select>
+                <button onclick="addSubject()">Add Subject</button>
+            </div>
+        </div>
+    </div>
+    <div class="bnavbar">
+        <a href="watch.html"><i class="fas fa-graduation-cap icon-education"></i></a>
+        <a href="Learn/dist/index.html"><i class="fas fa-book icon-book"></i></a>
+        <a href="Flash/index.html"><i class="fas fa-sticky-note"></i></a>
+        <a href="calender.html"><i class="fas fa-calendar"></i></a>
+        <a href="profile.html"><i class="fas fa-smile icon-smile"></i></a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            loadSchedule();
+            generateCalendar();
+        });
+
+        function addSubject() {
+            const subject = document.getElementById('subjectInput').value;
+            const day = document.getElementById('daySelect').value;
+            if (subject) {
+                const dayElement = document.getElementById(day).querySelector('.event-container');
+                const newEvent = document.createElement('div');
+                newEvent.className = 'event';
+                newEvent.textContent = subject;
+                dayElement.appendChild(newEvent);
+                document.getElementById('subjectInput').value = '';
+                saveSchedule();
             }
         }
-  </script>
- </head>
- <body>
-    <div class="navbar">
-        <div class="logo">
-         Klyra
-        </div>
-        <div class="profile">
-         <!---<img alt="Anonymous profile picture" height="30" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-Hh5RPsKhtBPsWCFSiEKnUJ6x/user-8qgiVpCV0U0b7zDjfFInHgjl/img-eTsHhnpFktKsO9z40y9UvJgs.png?st=2024-09-20T10%3A32%3A52Z&amp;se=2024-09-20T12%3A32%3A52Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-19T23%3A08%3A47Z&amp;ske=2024-09-20T23%3A08%3A47Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=E3wLbR7ZflXHS9r9DCD29dDsiAMIbx9xILsmR/%2Bm7N4%3D" width="30"/>-->
-         <a class="signup" href="signup.html">
-          
-         </a>
-        </div>
-       </div>
-  <div class="container">
-   <div class="schedule">
-    <div class="schedule-header">
-     <select>
-      <option>
-       Week
-      </option>
-     </select>
-     <input type="date" value="2024-09-20"/>
-    </div>
-    <div class="schedule-content">
-     <div class="time-slot" data-day="Monday">
-      <div class="time">
-       MON
-      </div>
-      <div class="events">
-       <div class="event publicity">
-        <div>
-         Superposition Theorem
-        </div>
-        
-       </div>
-      </div>
-     </div>
-     <div class="time-slot" data-day="Tuesday">
-      <div class="time">
-       TUE
-      </div>
-      <div class="events">
-       <div class="event public">
-        <div>
-         Carnot Cycle
-        </div>
-        
 
+        function saveSchedule() {
+            const schedule = {};
+            document.querySelectorAll('.schedule-item').forEach(item => {
+                const day = item.id;
+                const events = [];
+                item.querySelectorAll('.event').forEach(event => {
+                    events.push(event.textContent);
+                });
+                schedule[day] = events;
+            });
+            localStorage.setItem('schedule', JSON.stringify(schedule));
+        }
 
-       </div>
-      </div>
-     </div>
-     <div class="time-slot" data-day="Wednesday">
-      <div class="time">
-       WED
-      </div>
-      <div class="events">
-       <div class="event technology">
-        <div>
-         Thevenins Circuits
-        </div>
-        
-       </div>
-      </div>
-     </div>
-     <div class="time-slot" data-day="Thursday">
-      <div class="time">
-       THU
-      </div>
-      <div class="events">
-       <div class="event sales-marketing">
-        <div>
-         Organometals
-        </div>
-        
-       </div>
-      </div>
-     </div>
-     <div class="time-slot" data-day="Friday">
-      <div class="time">
-       FRI
-      </div>
-      <div class="events">
-       <div class="event public">
-        <div>
-         Taylors Series
-        </div>
-        
-       </div>
-      </div>
-     </div>
-     <div class="time-slot" data-day="Saturday">
-      <div class="time">
-       SAT
-      </div>
-      <div class="events">
-       <div class="event finance">
-        <div>
-         Aromaticity
-        </div>
-        
-       </div>
-      </div>
-     </div>
-     <div class="time-slot" data-day="Sunday">
-      <div class="time">
-       SUN
-      </div>
-      <div class="events">
-       <div class="event seo">
-        <div>
-         Structure of Chlorophyll
-        </div>
-        
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="details">
-    <div class="status">
-     <div style="background-color: #000  ;"class="status-label">
-      Schedule
-     </div>
-     <div class="status-text">
-      Add Subject
-     </div>
-    </div>
-    <div class="input-box">
-     <input id="subject" placeholder="Enter subject" type="text"/>
-     <select id="day">
-      <option value="Monday">
-       Monday
-      </option>
-      <option value="Tuesday">
-       Tuesday
-      </option>
-      <option value="Wednesday">
-       Wednesday
-      </option>
-      <option value="Thursday">
-       Thursday
-      </option>
-      <option value="Friday">
-       Friday
-      </option>
-      <option value="Saturday">
-       Saturday
-      </option>
-      <option value="Sunday">
-       Sunday
-      </option>
-     </select>
-    </div>
-    <div style="background-color: #f0eae4; color: #000;" class="reschedule" onclick="addSubject()">
-     Add Subject
-    </div>
-    
-    </div>
-  </div>
-  <div class="bnavbar">
-    <a href="watch.html"><i class="fas fa-graduation-cap icon-education"></i></a>
-    <a href="Learn/dist/index.html"><i class="fas fa-book icon-book"></i></a>
-    <a href="Flash/index.html"><i class="fas fa-sticky-note"></i></a>
-    <a href="calender.html"><i class="fas fa-calendar"></i></a>
-    <a href="profile.html"><i class="fas fa-smile icon-smile"></i></a>
-</div>      
-  </body>
-  </html>
+        function loadSchedule() {
+            const schedule = JSON.parse(localStorage.getItem('schedule'));
+            if (schedule) {
+                for (const day in schedule) {
+                    const dayElement = document.getElementById(day).querySelector('.event-container');
+                    dayElement.innerHTML = ''; // Clear existing events to avoid duplication
+                    schedule[day].forEach(eventText => {
+                        const newEvent = document.createElement('div');
+                        newEvent.className = 'event';
+                        newEvent.textContent = eventText;
+                        dayElement.appendChild(newEvent);
+                    });
+                }
+            }
+        }
+
+        function toggleCalendar() {
+            const calendar = document.getElementById('calendar');
+            calendar.style.display = calendar.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function generateCalendar() {
+            const calendarBody = document.getElementById('calendarBody');
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            let html = '';
+            let day = 1;
+
+            for (let i = 0; i < 6; i++) {
+                html += '<tr>';
+                for (let j = 0; j < 7; j++) {
+                    if (i === 0 && j < firstDay) {
+                        html += '<td></td>';
+                    } else if (day > daysInMonth) {
+                        html += '<td></td>';
+                    } else {
+                        html += `<td onclick="selectDate(${day})">${day}</td>`;
+                        day++;
+                    }
+                }
+                html += '</tr>';
+            }
+
+            calendarBody.innerHTML = html;
+        }
+
+        function selectDate(day) {
+            const date = new Date();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            const selectedDate = `${day < 10 ? '0' + day : day} / ${month < 10 ? '0' + month : month} / ${year}`;
+            document.getElementById('selectedDate').textContent = selectedDate;
+            toggleCalendar();
+        }
+    </script>
+</body>
+</html>
