@@ -16,6 +16,7 @@
             border: 3px solid black;
             border-radius: 6px;
             overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
         }
         .background-shapes {
             position: absolute;
@@ -156,6 +157,7 @@
         }
         .form-group input {
             display: flex;
+            width: 300px;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -226,15 +228,30 @@
             color: #fff;
             transition: transform 0.3s;
         }
+        .bottom-menu .icon-education{
+            color:#5582db
+        }
+        .bottom-menu .icon-note{
+            color:#ffebc3
+        }
+        .bottom-menu .icon-book{
+            color:#f1b6d1
+        }
+        .bottom-menu .icon-calendar{
+            color:#b6f1d1
+        }
+        .bottom-menu .icon-smile{
+            color:#f8c3ff
+        }
         .bottom-menu i:hover {
             transform: scale(1.5);
         }
-        .bottom-menu i:nth-child(1) { color: #a8b4ff; }
+        /*.bottom-menu i:nth-child(1) { color: #a8b4ff; }
         .bottom-menu i:nth-child(2) { color: #f8c3ff; }
         .bottom-menu i:nth-child(3) { color: #ffebc3; }
         .bottom-menu i:nth-child(4) { color: #c3ffd8; }
         .bottom-menu i:nth-child(5) { color: #c3fffc; }
-        .bottom-menu i:nth-child(6) { color: #fff; }
+        .bottom-menu i:nth-child(6) { color: #fff; }*/
 
         a{color: white}
         a:visited{color:white}
@@ -272,7 +289,6 @@
         <div class="form-group">
             <button type="submit">Submit</button>
         </div>
-        <button class='btn' type="submit"><a href="profile.html" style="text-decoration: none">Sign Up</a></button>
     </form>
     <div class="social-signup">
         <p>Or sign up with</p>
@@ -282,38 +298,44 @@
         </div>
     </div>
 </div>
-  <div class="bottom-menu">
-   <a href="watch.html" style="text-decoration: none"><i class="fas fa-graduation-cap">
+  <!--<div class="bottom-menu">
+   <a href="watch.html" style="text-decoration: none"><i class="fas fa-graduation-cap icon-education">
    </i></a>
-   <a href="Learn/dist/index.html" style="text-decoration: none"><i class="fas fa-book">
+   <a href="Learn/dist/index.html" style="text-decoration: none"><i class="fas fa-book icon-book">
    </i></a>
-   <a href="Flash/index.html" style="text-decoration: none"><i class="fas fa-sticky-note">
+   <a href="Flash/index.html" style="text-decoration: none"><i class="fas fa-sticky-note icon-note">
    </i></a>
-   <a href="calender.html" style="text-decoration: none"><i class="fas fa-calendar">
+   <a href="calender.html" style="text-decoration: none"><i class="fas fa-calendar icon-calendar">
    </i></a>
-   <a href="profile.html" style="text-decoration: none"><i class="fas fa-smile">
+   <a href="profile.html" style="text-decoration: none"><i class="fas fa-smile icon-smile">
    </i></a>
-  </div>
+  </div> -->
 
   <script>
         document.getElementById('signupForm').addEventListener('submit', function(event) {
             event.preventDefault();
             
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            const csvContent = `Full Name,Email,Password\n${fullName},${email},${password}`;
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            link.setAttribute('href', url);
-            link.setAttribute('download', 'signup_data.csv');
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
 
+                const formData = {fullName, email, password};
+
+                localStorage.setItem('userName', fullName);
+
+                window.location.href = "profile.html";
+            
+                /** const csvContent = `${fullName},${email},${password}\n`;
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement('a');
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', 'signup_data.csv');
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link); **/
+            
             // Reset the form
             document.getElementById('signupForm').reset();
         });
