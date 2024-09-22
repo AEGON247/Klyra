@@ -10,12 +10,10 @@ We at Klyra are dedicated to innovating in the education sector after being part
 https://github.com/user-attachments/assets/94201151-960d-4fc6-a0f6-eac09ac30884
 
 
+<h2> Still don't understand ?? &ensp; <img src = "https://gifdb.com/images/thumbnail/thinking-face-emoji-ly5iyoqldfne0h20.gif" width = 62 height = 62></h2>
+<h3> Dont WORRY !! </h3>
 
-
-
-
-
-<h3>Note to use our services </h3>
+<h3>To use our services </h3>
 <h4>1) Download/Clone the Github Repo</h4>
 <h4>2) Run the relevant pages as needed </h4>
-<h4>Also note in Watch.html you need to input you own unique Youtube API key</h4>
+<h4>Note : In <i>watch.html</i> you need to input your own unique <a href = "https://console.cloud.google.com/apis">Youtube API key</a></h4>
