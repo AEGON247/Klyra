@@ -154,12 +154,29 @@
         .bottom-menu i:hover {
             transform: scale(1.5);
         }
-        .bottom-menu i:nth-child(1) { color: #a8b4ff; }
+
+        .bottom-menu .icon-cap{
+            color:#a8b4ff
+        }
+        .bottom-menu .icon-note{
+            color:#ffebc3
+        }
+        .bottom-menu .icon-book{
+            color:#f8c3ff
+        }
+        .bottom-menu .icon-calendar{
+            color:#c3ffd8
+        }
+        .bottom-menu .icon-smile{
+            color:#c3fffc
+        }
+
+        /* .bottom-menu i:nth-child(1) { color: #a8b4ff; }
         .bottom-menu i:nth-child(2) { color: #f8c3ff; }
         .bottom-menu i:nth-child(3) { color: #ffebc3; }
         .bottom-menu i:nth-child(4) { color: #c3ffd8; }
         .bottom-menu i:nth-child(5) { color: #c3fffc; }
-        .bottom-menu i:nth-child(6) { color: #fff; }
+        .bottom-menu i:nth-child(6) { color: #fff; } */
    body {
             
             background-color: #f8f5f2;
@@ -180,6 +197,13 @@
             justify-content: space-between;
             padding: 20px;
         }
+        .welcome-container {
+            width: 100%;
+            display: flex; /* Enables horizontal alignment */
+            justify-content: left;
+            align-items: right;
+            background-color: #f4f4f4;
+        }
         .main-content {
             width: 65%;
         }
@@ -189,6 +213,11 @@
             padding: 20px;
             border-radius: 20px;
             padding-bottom: 0%;
+        }
+        .message {
+            font-size: 18px;
+            color: #555;
+            margin-left: 10px;
         }
         h1 {
             font-size: 40px;
@@ -359,9 +388,10 @@
 <div class="content">
   <div class="container">
    <div class="main-content">
-    <h1 style="font-size: 26px;">
-     Welcome !
-    </h1>
+    <div class="welcome-container">
+        <h1 style="font-size: 26px;">Welcome ! &nbsp;
+    <div id="text-holder"></div></h1>
+    </div>
     <div class="filter-buttons">
      <div class="filter-button active">
       <i class="fas fa-th-large">
@@ -371,12 +401,12 @@
      <div class="filter-button">
       <i class="fas fa-video">
       </i>
-      <a href = "watch.html" style="text-decoration:none">KlyraLearn</a>
+      <a href = "watch.html" style="text-decoration:none">KlyraWatch</a>
      </div>
      <div class="filter-button">
       <i class="fas fa-book">
       </i>
-      <a href = "Learn/dist/index.html" style="text-decoration:none">KlyraQuiz</a>
+      <a href = "Learn/dist/index.html" style="text-decoration:none">KlyraLearn</a>
      </div>
      <div class="filter-button">
       <i class="fas fa-bolt">
@@ -540,16 +570,18 @@
     
 </div>
   <div class="bottom-menu">
-    <a href="watch.html" style="text-decoration:none"><i class="fas fa-graduation-cap">
+    <a href="watch.html" style="text-decoration:none"><i class="fas fa-graduation-cap icon-cap">
     </i></a>
-    <a href="Learn/dist/index.html" style="text-decoration:none"><i class="fas fa-book">
+    <a href="Learn/dist/index.html" style="text-decoration:none"><i class="fas fa-book icon-book">
     </i></a>
-    <a href="Flash/index.html" style="text-decoration:none"><i class="fas fa-sticky-note">
+    <a href="Flash/index.html" style="text-decoration:none"><i class="fas fa-sticky-note icon-note">
     </i></a>
-    <i class="fas fa-calendar">
-    </i>
-    <a href="profile.html" style="text-decoration:none"><i class="fas fa-smile">
+    <a href="calender.html" style="text-decoration: none"><i class="fas fa-calendar icon-calendar">
     </i></a>
-   </div>   
+    <a href="profile.html" style="text-decoration:none"><i class="fas fa-smile icon-smile">
+    </i></a>
+   </div>
+
+<script src = "script.js"></script>
  </body>
 </html>
